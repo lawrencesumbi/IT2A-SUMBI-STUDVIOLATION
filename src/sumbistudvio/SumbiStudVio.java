@@ -23,27 +23,96 @@ public class SumbiStudVio {
 
     }
     
+    private void viewStudents() {
+        String query = "SELECT * FROM student";
+        String[] headers = {"ID", "Firstname", "Lastname", "Program", "Section"};
+        String[] columns = {"stud_id", "stud_fname", "stud_lname", "stud_program", "stud_section"};
+
+        config conf = new config();
+        conf.viewRecords(query, headers, columns);
+    }
     
+    
+    private void updateStudents(){
+    
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter ID to update: ");
+        int id = sc.nextInt();
+        
+        System.out.print("Enter new Student First Name: ");
+        String new_fname = sc.next();
+        System.out.print("Enter new Student Last Name: ");
+        String new_lname = sc.next();
+        System.out.print("Enter new Student Program: ");
+        String new_program = sc.next();
+        System.out.print("Enter new Student Section: ");
+        String new_section = sc.next();
+        
+        String query = "UPDATE student SET stud_fname = ?, stud_lname = ?, stud_program = ?, stud_section = ? WHERE stud_id = ?";
+        
+        config conf = new config();
+        conf.updateRecord(query, new_fname, new_lname, new_program, new_section, id);
+        
+    }
+    
+    private void deleteStudents(){
+    
+        Scanner sc = new Scanner (System.in);
+        
+        System.out.print("Enter ID to delete: ");
+        int id = sc.nextInt();
+        
+        String query = "Delete FROM student WHERE stud_id = ?";
+       
+        config conf = new config();
+        conf.deleteRecord(query, id);
+
+    }
+    
+
     public static void main(String[] args) {
         
         SumbiStudVio test = new SumbiStudVio();
         Scanner input = new Scanner(System.in);
+        String response;
         
-        System.out.println("1. ADD");
-        System.out.println("2. VIEW");
-        System.out.println("3. UPDATE");
-        System.out.println("4. DELETE");
-        System.out.println("5. EXIT");
-        
-        System.out.print("Enter Action: ");
-        int action = input.nextInt();
-        
-        switch(action){
-            case 1:
-                test.addStudents();
-            break; 
-        }
-        
+        do{    
+            System.out.println("1. ADD");
+            System.out.println("2. VIEW");
+            System.out.println("3. UPDATE");
+            System.out.println("4. DELETE");
+            System.out.println("5. EXIT");
+
+            System.out.print("Enter Action: ");
+            int action = input.nextInt();
+
+            switch(action){
+                case 1:
+                    test.addStudents();
+                break; 
+                case 2:
+                    test.viewStudents();
+                break;
+                case 3:
+                    test.viewStudents();
+                    test.updateStudents();
+                    break;
+                case 4:
+                    test.viewStudents();
+                    test.deleteStudents();
+                    test.viewStudents();
+                break;
+            }
+            
+            System.out.print("Do you want to CONTINUE? ");
+            response = input.next();
+            
+        }while(response.equalsIgnoreCase("yes"));
+            System.out.println("Thank You!");
+            
     }
-    
+     
 }
+
+    
+
