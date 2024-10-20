@@ -70,17 +70,17 @@ public class SumbiStudVio {
     }
     
 
-    public static void main(String[] args) {
+    public void main(String[] args) {
         
         SumbiStudVio test = new SumbiStudVio();
         Scanner input = new Scanner(System.in);
-        String response;
+       
         
         do{    
             System.out.println("1. ADD");
-            System.out.println("2. VIEW");
-            System.out.println("3. UPDATE");
-            System.out.println("4. DELETE");
+            System.out.println("2. UPDATE");
+            System.out.println("3. DELETE");
+            System.out.println("4. VIEW");
             System.out.println("5. EXIT");
 
             System.out.print("Enter Action: ");
@@ -92,23 +92,22 @@ public class SumbiStudVio {
                 break; 
                 case 2:
                     test.viewStudents();
+                    test.updateStudents();
                 break;
                 case 3:
                     test.viewStudents();
-                    test.updateStudents();
+                    test.deleteStudents();
+                    test.viewStudents();
                     break;
                 case 4:
                     test.viewStudents();
-                    test.deleteStudents();
-                    test.viewStudents();
                 break;
+                case 5:
+                    return;
             }
             
-            System.out.print("Do you want to CONTINUE? ");
-            response = input.next();
             
-        }while(response.equalsIgnoreCase("yes"));
-            System.out.println("Thank You!");
+        }while(true);
             
     }
      
