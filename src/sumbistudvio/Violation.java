@@ -8,14 +8,16 @@ public class Violation {
         Scanner sc = new Scanner(System.in);
         config conf = new config();
         
-        sc.nextLine();
+        
         System.out.print("Enter Violation Name: ");
-        String vio_name = sc.nextLine();       
+        String vio_name = sc.nextLine();  
+        
         System.out.print("Enter Description: ");
-        String vio_des = sc.next();
+        String vio_des = sc.nextLine();
+        
         System.out.print("Enter Severity of Violation: ");
-        String vio_severity = sc.next();
-        sc.nextLine();  
+        String vio_severity = sc.nextLine();
+        
         System.out.print("Enter Sanction: ");
         String vio_sanction = sc.nextLine();
 
@@ -42,13 +44,16 @@ public class Violation {
         System.out.print("Enter Violation ID to update: ");
         int id = sc.nextInt();
         
+        
         System.out.print("Enter new Violation Name: ");
-        String vio_name = sc.next();
-        sc.nextLine(); 
+        String vio_name = sc.nextLine();
+        
         System.out.print("Enter new Description: ");
-        String vio_des = sc.next();
+        String vio_des = sc.nextLine();
+        
         System.out.print("Enter new Severity of Violation: ");
-        String vio_severity = sc.next();
+        String vio_severity = sc.nextLine();
+        
         System.out.print("Enter new Sanction: ");
         String vio_sanction = sc.nextLine();
 
