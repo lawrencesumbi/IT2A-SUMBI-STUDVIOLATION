@@ -8,27 +8,28 @@ public class Violation {
         Scanner sc = new Scanner(System.in);
         config conf = new config();
         
+        sc.nextLine();
         System.out.print("Enter Violation Name: ");
-        String vio_name = sc.next();
-        sc.nextLine();         
-        System.out.print("Enter Date of Violation: ");
-        String vio_date = sc.next();
+        String vio_name = sc.nextLine();       
+        System.out.print("Enter Description: ");
+        String vio_des = sc.next();
         System.out.print("Enter Severity of Violation: ");
         String vio_severity = sc.next();
-        System.out.print("Enter Violation Sanction: ");
+        sc.nextLine();  
+        System.out.print("Enter Sanction: ");
         String vio_sanction = sc.nextLine();
 
         
-        String sql = "INSERT INTO violation (vio_name, vio_date, vio_severity, vio_sanction) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO violation (vio_name, vio_des, vio_severity, vio_sanction) VALUES (?, ?, ?, ?)";
 
-        conf.addRecords(sql, vio_name, vio_date, vio_severity, vio_sanction);
+        conf.addRecords(sql, vio_name, vio_des, vio_severity, vio_sanction);
 
     }
     
     private void viewViolation() {
         String query = "SELECT * FROM violation";
-        String[] headers = {"VIOLATION ID", "VIOLATION NAME", "DATE OF VIOLATION", "SEVERITY", "VIOLATION SANCTION"};
-        String[] columns = {"vio_id", "vio_name", "vio_date", "vio_severity", "vio_sanction"};
+        String[] headers = {"VIOLATION ID", "VIOLATION NAME", "DESCRIPTION", "SEVERITY", "SANCTION"};
+        String[] columns = {"vio_id", "vio_name", "vio_des", "vio_severity", "vio_sanction"};
 
         config conf = new config();
         conf.viewRecords(query, headers, columns);
@@ -44,18 +45,18 @@ public class Violation {
         System.out.print("Enter new Violation Name: ");
         String vio_name = sc.next();
         sc.nextLine(); 
-        System.out.print("Enter new Date of Violation: ");
-        String vio_date = sc.next();
+        System.out.print("Enter new Description: ");
+        String vio_des = sc.next();
         System.out.print("Enter new Severity of Violation: ");
         String vio_severity = sc.next();
-        System.out.print("Enter new Violation Sanction: ");
+        System.out.print("Enter new Sanction: ");
         String vio_sanction = sc.nextLine();
 
         
-        String query = "UPDATE violation SET vio_name = ?, vio_date = ?, vio_severity = ?, vio_sanction = ? WHERE vio_id = ?";
+        String query = "UPDATE violation SET vio_name = ?, vio_des = ?, vio_severity = ?, vio_sanction = ? WHERE vio_id = ?";
         
         config conf = new config();
-        conf.updateRecords(query, vio_name, vio_date, vio_severity, vio_sanction, id);
+        conf.updateRecords(query, vio_name, vio_des, vio_severity, vio_sanction, id);
         
     }
     

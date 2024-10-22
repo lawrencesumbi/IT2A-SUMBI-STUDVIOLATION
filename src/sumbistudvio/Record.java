@@ -12,19 +12,60 @@ public class Record {
         int stud_id = sc.nextInt();
         System.out.print("Enter Violation ID: ");
         int vio_id = sc.nextInt();
-
-        String sql = "INSERT INTO record (stud_id, vio_id) VALUES (?, ?)";
-
-        conf.addRecords(sql, stud_id, vio_id);
+        System.out.print("Enter Date Reported: ");
+        String rec_reported = sc.next();
+        sc.nextLine();
+        System.out.print("Enter Date Settled: ");
+        String rec_settled = sc.nextLine();
         
+        String sql = "INSERT INTO record (stud_id, vio_id, rec_reported, rec_settled) VALUES (?, ?, ?, ?)";
+
+        conf.addRecords(sql, stud_id, vio_id, rec_reported, rec_settled);   
+    }
+    
+    private void viewRecord() {
+        String query = "SELECT * FROM record";
+        String[] headers = {"RECORD ID", "STUDENT ID", "VIOLATION ID", "DATE REPORTED", "DATE SETTLED"};
+        String[] columns = {"rec_id", "stud_id", "vio_id", "rec_reported", "rec_settled"};
+
+        config conf = new config();
+        conf.viewRecords(query, headers, columns);
+    }
+    
+    private void updateRecord(){
+    
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter Record ID to update: ");
+        int id = sc.nextInt();
         
+        sc.nextLine(); 
+        System.out.print("Enter new Date Settled: ");
+        String rec_settled = sc.nextLine();
+         
+        String query = "UPDATE record SET rec_settled = ? WHERE rec_id = ?";
+        
+        config conf = new config();
+        conf.updateRecords(query, rec_settled, id);
         
     }
     
+    private void deleteRecord(){
+    
+        Scanner sc = new Scanner (System.in);
+        
+        System.out.print("Enter Record ID to delete: ");
+        int id = sc.nextInt();
+        
+        String query = "Delete FROM record WHERE rec_id = ?";
+       
+        config conf = new config();
+        conf.deleteRecords(query, id);
+
+    }
     
     public void main(String[] args) {
         
-        Record test = new Record();
+        Record rec = new Record();
         Scanner input = new Scanner(System.in);
        
         
@@ -40,16 +81,19 @@ public class Record {
 
             switch(action){
                 case 1:
-                    test.addRecord();
+                    rec.addRecord();
                 break; 
                 case 2:
-                    
+                    rec.viewRecord();
+                    rec.updateRecord();
                 break;
                 case 3:
-                    
+                    rec.viewRecord();
+                    rec.deleteRecord();
+                    rec.viewRecord();
                     break;
                 case 4:
-                    
+                    rec.viewRecord();
                 break;
                 case 5:
                     return;

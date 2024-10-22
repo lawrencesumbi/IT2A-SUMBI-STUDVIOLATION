@@ -1,4 +1,3 @@
-
 package sumbistudvio;
 
 import java.util.Scanner;
