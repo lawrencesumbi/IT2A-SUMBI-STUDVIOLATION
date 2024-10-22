@@ -2,7 +2,7 @@ package sumbistudvio;
 
 import java.util.Scanner;
 
-public class SumbiStudVio {
+public class Student {
   
     public void addStudents(){
         Scanner sc = new Scanner(System.in);
@@ -19,7 +19,7 @@ public class SumbiStudVio {
 
         String sql = "INSERT INTO student (stud_fname, stud_lname, stud_program, stud_section) VALUES (?, ?, ?, ?)";
 
-        conf.addRecord(sql, stud_fname, stud_lname, stud_program, stud_section);
+        conf.addRecords(sql, stud_fname, stud_lname, stud_program, stud_section);
 
     }
     
@@ -51,7 +51,7 @@ public class SumbiStudVio {
         String query = "UPDATE student SET stud_fname = ?, stud_lname = ?, stud_program = ?, stud_section = ? WHERE stud_id = ?";
         
         config conf = new config();
-        conf.updateRecord(query, new_fname, new_lname, new_program, new_section, id);
+        conf.updateRecords(query, new_fname, new_lname, new_program, new_section, id);
         
     }
     
@@ -65,14 +65,14 @@ public class SumbiStudVio {
         String query = "Delete FROM student WHERE stud_id = ?";
        
         config conf = new config();
-        conf.deleteRecord(query, id);
+        conf.deleteRecords(query, id);
 
     }
     
 
     public void main(String[] args) {
         
-        SumbiStudVio test = new SumbiStudVio();
+        Student test = new Student();
         Scanner input = new Scanner(System.in);
        
         

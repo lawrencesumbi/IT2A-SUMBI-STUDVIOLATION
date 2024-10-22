@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Scanner;
 
 public class config {
@@ -16,14 +17,29 @@ public class config {
             Class.forName("org.sqlite.JDBC");
             con = DriverManager.getConnection("jdbc:sqlite:sumbistudvio.db");
             System.out.println("Connection Successful");
+            
+            enableForeignKeyConstraints(con);
+            
         } catch (Exception e) {
             System.out.println("Connection Failed: " + e);
         }
         return con;
     }
     
+    
+    private static void enableForeignKeyConstraints(Connection conn) {
+        try (Statement stmt = conn.createStatement()) {
+            String sql = "PRAGMA foreign_keys = ON";
+            stmt.execute(sql);
+            System.out.println("Foreign key constraints enabled.");
+        } catch (Exception e) {
+            System.out.println("Failed to enable foreign key constraints: " + e.getMessage());
+        }
+    }
+    
+    
 
-    public void addRecord(String sql, Object... values) {
+    public void addRecords(String sql, Object... values) {
         try (Connection conn = this.connectDB();
         PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
@@ -96,7 +112,7 @@ public class config {
     
     
     
-    public void updateRecord(String sql, Object... values) {
+    public void updateRecords(String sql, Object... values) {
         try (Connection conn = this.connectDB();
             PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
@@ -130,7 +146,7 @@ public class config {
     }
 
     
-    public void deleteRecord(String sql, Object... values) {
+    public void deleteRecords(String sql, Object... values) {
         try (Connection conn = this.connectDB();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
 

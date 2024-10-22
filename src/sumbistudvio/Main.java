@@ -14,15 +14,15 @@ public class Main {
         System.out.println("-------------- DISPLAY MENU --------------");
         System.out.println("1. Student");
         System.out.println("2. Violation");
-        System.out.println("3. Records");
+        System.out.println("3. Record");
         System.out.println("4. Exit");
         
-        System.out.print("Input Action:");
+        System.out.print("Input Action: ");
         int choice = scanner.nextInt();
         
         switch (choice) {
             case 1:
-                SumbiStudVio test = new SumbiStudVio(); 
+                Student test = new Student(); 
                 test.main(args);  
                 break;
             case 2:
@@ -30,6 +30,8 @@ public class Main {
                 vio.main(args);  
                break;
             case 3:
+                Record rec = new Record();
+                rec.main(args);
                 break;
             case 4:
                System.out.println("Thank you for using my system");
