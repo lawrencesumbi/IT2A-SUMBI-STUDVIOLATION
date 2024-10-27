@@ -7,10 +7,14 @@ public class Record {
     public void addRecord() {
         Scanner sc = new Scanner(System.in);
         config conf = new config();
+        Student stud = new Student();
+        Violation vio = new Violation();
 
-        System.out.print("Enter Student ID: ");
+        stud.viewStudents();
+        System.out.print("Enter Student ID to add: ");
         int stud_id = sc.nextInt();
-        System.out.print("Enter Violation ID: ");
+        vio.viewViolation();
+        System.out.print("Enter Violation ID to add: ");
         int vio_id = sc.nextInt();
         System.out.print("Enter Date Reported: ");
         String rec_reported = sc.next();
@@ -24,9 +28,12 @@ public class Record {
     }
     
     private void viewRecord() {
-        String query = "SELECT * FROM record";
-        String[] headers = {"RECORD ID", "STUDENT ID", "VIOLATION ID", "DATE REPORTED", "DATE SETTLED"};
-        String[] columns = {"rec_id", "stud_id", "vio_id", "rec_reported", "rec_settled"};
+        String query = "SELECT record.rec_id, student.stud_name, violation.vio_name, record.rec_reported, record.rec_settled "
+                + "FROM record "
+                + "JOIN student ON record.stud_id = student.stud_id "
+                + "JOIN violation ON record.vio_id = violation.vio_id";
+        String[] headers = {"RECORD ID", "STUDENT NAME", "VIOLATION NAME", "DATE REPORTED", "DATE SETTLED"};
+        String[] columns = {"rec_id", "stud_name", "vio_name", "rec_reported", "rec_settled"};
 
         config conf = new config();
         conf.viewRecords(query, headers, columns);

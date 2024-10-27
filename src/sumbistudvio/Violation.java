@@ -28,9 +28,9 @@ public class Violation {
 
     }
     
-    private void viewViolation() {
+    public void viewViolation() {
         String query = "SELECT * FROM violation";
-        String[] headers = {"VIOLATION ID", "VIOLATION NAME", "DESCRIPTION", "SEVERITY", "SANCTION"};
+        String[] headers = {"Violation ID", "Violation Name", "Description", "Severity", "Sanction"};
         String[] columns = {"vio_id", "vio_name", "vio_des", "vio_severity", "vio_sanction"};
 
         config conf = new config();
@@ -82,7 +82,7 @@ public class Violation {
 
     public void main(String[] args) {
         
-        Violation test = new Violation();
+        Violation vio = new Violation();
         Scanner input = new Scanner(System.in);
        
         
@@ -98,19 +98,19 @@ public class Violation {
 
             switch(action){
                 case 1:
-                    test.addViolation();
+                    vio.addViolation();
                 break; 
                 case 2:
-                    test.viewViolation();
-                    test.updateViolation();
+                    vio.viewViolation();
+                    vio.updateViolation();
                 break;
                 case 3:
-                    test.viewViolation();
-                    test.deleteViolation();
-                    test.viewViolation();
+                    vio.viewViolation();
+                    vio.deleteViolation();
+                    vio.viewViolation();
                     break;
                 case 4:
-                    test.viewViolation();
+                    vio.viewViolation();
                 break;
                 case 5:
                     return;

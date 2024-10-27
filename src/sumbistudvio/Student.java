@@ -8,25 +8,26 @@ public class Student {
         Scanner sc = new Scanner(System.in);
         config conf = new config();
         
-        System.out.print("Student First Name: ");
-        String stud_fname = sc.next();
-        System.out.print("Student Last Name: ");
-        String stud_lname = sc.next();
-        System.out.print("Student Program: ");
+        System.out.print("Enter Student Full Name: ");
+        String stud_name = sc.nextLine();
+        System.out.print("Enter Student Program: ");
         String stud_program = sc.next();
-        System.out.print("Student Section: ");
+        System.out.print("Enter Student Section: ");
         String stud_section = sc.next();
+        sc.nextLine();
+        System.out.print("Enter Student Address: ");
+        String stud_address = sc.nextLine();
 
-        String sql = "INSERT INTO student (stud_fname, stud_lname, stud_program, stud_section) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO student (stud_name, stud_program, stud_section, stud_address) VALUES (?, ?, ?, ?)";
 
-        conf.addRecords(sql, stud_fname, stud_lname, stud_program, stud_section);
+        conf.addRecords(sql, stud_name, stud_program, stud_section, stud_address);
 
     }
     
-    private void viewStudents() {
+    public void viewStudents() {
         String query = "SELECT * FROM student";
-        String[] headers = {"ID", "Firstname", "Lastname", "Program", "Section"};
-        String[] columns = {"stud_id", "stud_fname", "stud_lname", "stud_program", "stud_section"};
+        String[] headers = {"ID", "Student Name", "Program", "Section", "Address"};
+        String[] columns = {"stud_id", "stud_name", "stud_program", "stud_section", "stud_address"};
 
         config conf = new config();
         conf.viewRecords(query, headers, columns);
@@ -39,19 +40,22 @@ public class Student {
         System.out.print("Enter ID to update: ");
         int id = sc.nextInt();
         
-        System.out.print("Enter new Student First Name: ");
-        String new_fname = sc.next();
-        System.out.print("Enter new Student Last Name: ");
-        String new_lname = sc.next();
+        
+        System.out.print("Enter new Student Full Name: ");
+        String new_name = sc.nextLine();
         System.out.print("Enter new Student Program: ");
         String new_program = sc.next();
         System.out.print("Enter new Student Section: ");
         String new_section = sc.next();
+        sc.nextLine();
+        System.out.print("Enter new Student Address: ");
+        String new_address = sc.nextLine();
         
-        String query = "UPDATE student SET stud_fname = ?, stud_lname = ?, stud_program = ?, stud_section = ? WHERE stud_id = ?";
+        
+        String query = "UPDATE student SET stud_name = ?, stud_program = ?, stud_section = ?, stud_address = ? WHERE stud_id = ?";
         
         config conf = new config();
-        conf.updateRecords(query, new_fname, new_lname, new_program, new_section, id);
+        conf.updateRecords(query, new_name, new_program, new_section, new_address, id);
         
     }
     
@@ -72,7 +76,7 @@ public class Student {
 
     public void main(String[] args) {
         
-        Student test = new Student();
+        Student stud = new Student();
         Scanner input = new Scanner(System.in);
        
         
@@ -88,19 +92,19 @@ public class Student {
 
             switch(action){
                 case 1:
-                    test.addStudents();
+                    stud.addStudents();
                 break; 
                 case 2:
-                    test.viewStudents();
-                    test.updateStudents();
+                    stud.viewStudents();
+                    stud.updateStudents();
                 break;
                 case 3:
-                    test.viewStudents();
-                    test.deleteStudents();
-                    test.viewStudents();
+                    stud.viewStudents();
+                    stud.deleteStudents();
+                    stud.viewStudents();
                     break;
                 case 4:
-                    test.viewStudents();
+                    stud.viewStudents();
                 break;
                 case 5:
                     return;
