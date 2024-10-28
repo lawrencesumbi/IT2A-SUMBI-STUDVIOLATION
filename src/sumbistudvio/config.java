@@ -5,11 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.Scanner;
 
 public class config {
-    
     
     public static Connection connectDB() {
         Connection con = null;
@@ -18,27 +15,33 @@ public class config {
             con = DriverManager.getConnection("jdbc:sqlite:sumbistudvio.db");
             System.out.println("Connection Successful");
             
-            enableForeignKeyConstraints(con);
-            
         } catch (Exception e) {
             System.out.println("Connection Failed: " + e);
         }
         return con;
     }
-    
-    
-    private static void enableForeignKeyConstraints(Connection conn) {
-        try (Statement stmt = conn.createStatement()) {
-            String sql = "PRAGMA foreign_keys = ON";
-            stmt.execute(sql);
-            System.out.println("Foreign key constraints enabled.");
-        } catch (Exception e) {
-            System.out.println("Failed to enable foreign key constraints: " + e.getMessage());
-        }
-    }
-    
-    
 
+    
+    public double getSingleValue(String sql, Object... params){
+        double result = 0.0;
+        try (Connection conn = this.connectDB();
+            PreparedStatement pstmt = conn.prepareStatement(sql)){
+            
+            for (int i = 0; i < params.length; i++){
+                pstmt.setObject(i + 1, params[i]);
+            }
+            
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()){
+                result = rs.getDouble(1);
+            }
+        } catch (SQLException e){
+            System.out.println("Error retrieving single value: " + e.getMessage());
+        }
+        return result;
+    }
+
+    
     public void addRecords(String sql, Object... values) {
         try (Connection conn = this.connectDB();
         PreparedStatement pstmt = conn.prepareStatement(sql)) {

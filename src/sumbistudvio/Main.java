@@ -10,11 +10,16 @@ public class Main {
         String resp;
        
         do{
-        System.out.println("-------------- DISPLAY MENU --------------");
-        System.out.println("1. Student");
-        System.out.println("2. Violation");
-        System.out.println("3. Record");
-        System.out.println("4. Exit");
+        System.out.println("-----------------------------");
+        System.out.println("|     STUDENT VIOLATION     |");
+        System.out.println("|          SYSTEM           |");
+        System.out.println("-----------------------------");
+        System.out.println("|       SELECT CHOICE       |");
+        System.out.println("|       1. STUDENT          |");
+        System.out.println("|       2. VIOLATION        |");
+        System.out.println("|       3. RECORD           |");
+        System.out.println("|       4. EXIT             |");
+        System.out.println("-----------------------------");
         
         System.out.print("Input Action: ");
         int choice = scanner.nextInt();
@@ -33,7 +38,7 @@ public class Main {
                 rec.main(args);
                 break;
             case 4:
-               System.out.println("Thank you for using my system");
+               System.out.println("Thank you for using my system.");
                System.exit(0);
                 break;
             default:
@@ -44,7 +49,7 @@ public class Main {
          resp = scanner.next();
 
        }while(resp.equalsIgnoreCase("yes"));
-        System.out.println("Thank you!");
+        System.out.println("Thank you for using my system.");
     }
         
  }

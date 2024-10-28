@@ -87,10 +87,10 @@ public class Violation {
        
         
         do{    
-            System.out.println("1. ADD");
-            System.out.println("2. UPDATE");
-            System.out.println("3. DELETE");
-            System.out.println("4. VIEW");
+            System.out.println("1. ADD VIOLATION");
+            System.out.println("2. UPDATE VIOLATION");
+            System.out.println("3. DELETE VIOLATION");
+            System.out.println("4. VIEW VIOLATION");
             System.out.println("5. EXIT");
 
             System.out.print("Enter Action: ");
@@ -107,7 +107,6 @@ public class Violation {
                 case 3:
                     vio.viewViolation();
                     vio.deleteViolation();
-                    vio.viewViolation();
                     break;
                 case 4:
                     vio.viewViolation();

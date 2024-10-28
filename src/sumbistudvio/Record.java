@@ -13,9 +13,21 @@ public class Record {
         stud.viewStudents();
         System.out.print("Enter Student ID to add: ");
         int stud_id = sc.nextInt();
+        
+        while((conf.getSingleValue("SELECT stud_id FROM student WHERE stud_id = ?", stud_id)) == 0){
+            System.out.print("ID don't exist, Enter Again: ");
+            stud_id = sc.nextInt();
+        }
+        
         vio.viewViolation();
         System.out.print("Enter Violation ID to add: ");
         int vio_id = sc.nextInt();
+        
+        while((conf.getSingleValue("SELECT vio_id FROM violation WHERE vio_id = ?", vio_id)) == 0){
+            System.out.print("ID don't exist, Enter Again: ");
+            vio_id = sc.nextInt();
+        }
+        
         System.out.print("Enter Date Reported: ");
         String rec_reported = sc.next();
         sc.nextLine();
@@ -77,10 +89,10 @@ public class Record {
        
         
         do{    
-            System.out.println("1. ADD");
-            System.out.println("2. UPDATE");
-            System.out.println("3. DELETE");
-            System.out.println("4. VIEW");
+            System.out.println("1. ADD RECORD");
+            System.out.println("2. UPDATE RECORD");
+            System.out.println("3. DELETE RECORD");
+            System.out.println("4. VIEW RECORD");
             System.out.println("5. EXIT");
 
             System.out.print("Enter Action: ");
@@ -97,7 +109,6 @@ public class Record {
                 case 3:
                     rec.viewRecord();
                     rec.deleteRecord();
-                    rec.viewRecord();
                     break;
                 case 4:
                     rec.viewRecord();

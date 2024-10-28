@@ -81,10 +81,10 @@ public class Student {
        
         
         do{    
-            System.out.println("1. ADD");
-            System.out.println("2. UPDATE");
-            System.out.println("3. DELETE");
-            System.out.println("4. VIEW");
+            System.out.println("1. ADD STUDENT");
+            System.out.println("2. UPDATE STUDENT");
+            System.out.println("3. DELETE STUDENT");
+            System.out.println("4. VIEW STUDENT");
             System.out.println("5. EXIT");
 
             System.out.print("Enter Action: ");
@@ -101,7 +101,6 @@ public class Student {
                 case 3:
                     stud.viewStudents();
                     stud.deleteStudents();
-                    stud.viewStudents();
                     break;
                 case 4:
                     stud.viewStudents();
