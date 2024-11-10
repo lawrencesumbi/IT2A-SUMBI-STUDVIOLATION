@@ -21,7 +21,7 @@ public class Main {
         System.out.println("|       4. EXIT             |");
         System.out.println("-----------------------------");
         
-        System.out.print("Input Action: ");
+        System.out.print("Input Choice: ");
         int choice = scanner.nextInt();
         
         switch (choice) {

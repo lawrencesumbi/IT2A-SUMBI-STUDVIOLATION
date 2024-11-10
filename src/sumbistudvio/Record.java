@@ -51,6 +51,31 @@ public class Record {
         conf.viewRecords(query, headers, columns);
     }
     
+    private void searchStudent() {
+        Scanner sc = new Scanner(System.in);
+        config conf = new config();
+        Student stud = new Student();
+        
+        stud.viewStudents();
+        System.out.print("Enter Student ID to search: ");
+        int stud_id = sc.nextInt();
+        
+        while((conf.getSingleValue("SELECT stud_id FROM student WHERE stud_id = ?", stud_id)) == 0){
+            System.out.print("ID don't exist, Enter Again: ");
+            stud_id = sc.nextInt();
+        }
+        
+        String query = "SELECT record.rec_id, student.stud_name, violation.vio_name, record.rec_reported, record.rec_settled "
+                + "FROM record "
+                + "JOIN student ON record.stud_id = student.stud_id "
+                + "JOIN violation ON record.vio_id = violation.vio_id "
+                + "WHERE record.stud_id = " + stud_id;
+        String[] headers = {"RECORD ID", "STUDENT NAME", "VIOLATION NAME", "DATE REPORTED", "DATE SETTLED"};
+        String[] columns = {"rec_id", "stud_name", "vio_name", "rec_reported", "rec_settled"};
+
+        conf.viewRecords(query, headers, columns);
+    }
+        
     private void updateRecord(){
     
         Scanner sc = new Scanner(System.in);
@@ -92,8 +117,9 @@ public class Record {
             System.out.println("1. ADD RECORD");
             System.out.println("2. UPDATE RECORD");
             System.out.println("3. DELETE RECORD");
-            System.out.println("4. VIEW RECORD");
-            System.out.println("5. EXIT");
+            System.out.println("4. VIEW ALL RECORDS");
+            System.out.println("5. SEARCH STUDENT");
+            System.out.println("6. EXIT");
 
             System.out.print("Enter Action: ");
             int action = input.nextInt();
@@ -114,6 +140,9 @@ public class Record {
                     rec.viewRecord();
                 break;
                 case 5:
+                    rec.searchStudent();
+                break;
+                case 6:
                     return;
             }
             
