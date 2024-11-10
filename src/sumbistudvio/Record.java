@@ -30,9 +30,8 @@ public class Record {
         
         System.out.print("Enter Date Reported: ");
         String rec_reported = sc.next();
-        sc.nextLine();
-        System.out.print("Enter Date Settled: ");
-        String rec_settled = sc.nextLine();
+        
+        String rec_settled = "ON GOING";
         
         String sql = "INSERT INTO record (stud_id, vio_id, rec_reported, rec_settled) VALUES (?, ?, ?, ?)";
 
@@ -40,6 +39,7 @@ public class Record {
     }
     
     private void viewRecord() {
+        System.out.println("STUDENT VIOLATION REPORTS:");
         String query = "SELECT record.rec_id, student.stud_name, violation.vio_name, record.rec_reported, record.rec_settled "
                 + "FROM record "
                 + "JOIN student ON record.stud_id = student.stud_id "
@@ -51,12 +51,13 @@ public class Record {
         conf.viewRecords(query, headers, columns);
     }
     
-    private void searchStudent() {
+    private void searchRecord() {
         Scanner sc = new Scanner(System.in);
         config conf = new config();
         Student stud = new Student();
         
         stud.viewStudents();
+        System.out.println("Search a specific student to view their violations...");
         System.out.print("Enter Student ID to search: ");
         int stud_id = sc.nextInt();
         
@@ -118,7 +119,7 @@ public class Record {
             System.out.println("2. UPDATE RECORD");
             System.out.println("3. DELETE RECORD");
             System.out.println("4. VIEW ALL RECORDS");
-            System.out.println("5. SEARCH STUDENT");
+            System.out.println("5. SEARCH RECORD");
             System.out.println("6. EXIT");
 
             System.out.print("Enter Action: ");
@@ -140,7 +141,7 @@ public class Record {
                     rec.viewRecord();
                 break;
                 case 5:
-                    rec.searchStudent();
+                    rec.searchRecord();
                 break;
                 case 6:
                     return;

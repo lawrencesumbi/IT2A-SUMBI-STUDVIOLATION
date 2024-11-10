@@ -45,11 +45,11 @@ public class Main {
                 System.out.println("Invalid choice");
                 break;
         }
-       System.out.print("Do you want to continue?: ");
-         resp = scanner.next();
+        System.out.print("Do you want to continue?: ");
+        resp = scanner.next();
 
-       }while(resp.equalsIgnoreCase("yes"));
+        }while(resp.equalsIgnoreCase("yes"));
         System.out.println("Thank you for using my system.");
     }
         
- }
+}

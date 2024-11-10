@@ -8,7 +8,6 @@ public class Violation {
         Scanner sc = new Scanner(System.in);
         config conf = new config();
         
-        
         System.out.print("Enter Violation Name: ");
         String vio_name = sc.nextLine();  
         
@@ -29,6 +28,7 @@ public class Violation {
     }
     
     public void viewViolation() {
+        System.out.println("LIST OF VIOLATIONS:");
         String query = "SELECT * FROM violation";
         String[] headers = {"Violation ID", "Violation Name", "Description", "Severity", "Sanction"};
         String[] columns = {"vio_id", "vio_name", "vio_des", "vio_severity", "vio_sanction"};
@@ -44,7 +44,7 @@ public class Violation {
         System.out.print("Enter Violation ID to update: ");
         int id = sc.nextInt();
         
-        
+        sc.nextLine();
         System.out.print("Enter new Violation Name: ");
         String vio_name = sc.nextLine();
         

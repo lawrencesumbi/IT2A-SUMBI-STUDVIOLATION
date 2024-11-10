@@ -25,6 +25,7 @@ public class Student {
     }
     
     public void viewStudents() {
+        System.out.println("STUDENTS INFORMATION:");
         String query = "SELECT * FROM student";
         String[] headers = {"ID", "Student Name", "Program", "Section", "Address"};
         String[] columns = {"stud_id", "stud_name", "stud_program", "stud_section", "stud_address"};
