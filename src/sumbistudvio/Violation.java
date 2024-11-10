@@ -7,18 +7,43 @@ public class Violation {
      public void addViolation(){
         Scanner sc = new Scanner(System.in);
         config conf = new config();
+        validator validator = new validator();
         
-        System.out.print("Enter Violation Name: ");
-        String vio_name = sc.nextLine();  
+        String vio_name;
+        do {
+            System.out.print("Enter Violation Name: ");
+            vio_name = sc.nextLine();
+            if (!validator.isValidName(vio_name)) {
+                System.out.println("\tINVALID NAME. Only alphabetic characters are allowed.");
+            }
+        } while (!validator.isValidName(vio_name)); 
         
-        System.out.print("Enter Description: ");
-        String vio_des = sc.nextLine();
+        String vio_des;
+        do {
+            System.out.print("Enter Description: ");
+            vio_des = sc.nextLine();
+            if (!validator.isValidName(vio_des)) {
+                System.out.println("\tINVALID DESCRIPTION. Only alphabetic characters are allowed.");
+            }
+        } while (!validator.isValidName(vio_des)); 
         
-        System.out.print("Enter Severity of Violation: ");
-        String vio_severity = sc.nextLine();
+        String vio_severity;
+        do {
+            System.out.print("Enter Severity of Violation: ");
+            vio_severity = sc.nextLine();
+            if (!validator.isValidName(vio_severity)) {
+                System.out.println("\tINVALID SEVERITY. Only alphabetic characters are allowed.");
+            }
+        } while (!validator.isValidName(vio_severity)); 
         
-        System.out.print("Enter Sanction: ");
-        String vio_sanction = sc.nextLine();
+        String vio_sanction;
+        do {
+            System.out.print("Enter Sanction: ");
+            vio_sanction = sc.nextLine();
+            if (!validator.isValidName(vio_sanction)) {
+                System.out.println("\tINVALID SANCTION. Only alphabetic characters are allowed.");
+            }
+        } while (!validator.isValidName(vio_sanction)); 
 
         
         String sql = "INSERT INTO violation (vio_name, vio_des, vio_severity, vio_sanction) VALUES (?, ?, ?, ?)";
@@ -41,41 +66,100 @@ public class Violation {
     private void updateViolation(){
     
         Scanner sc = new Scanner(System.in);
+        config conf = new config();
+        validator validator = new validator();
+        
         System.out.print("Enter Violation ID to update: ");
-        int id = sc.nextInt();
+        int vio_id;
+        
+        while (true) {
+
+            if (sc.hasNextInt()) {
+                vio_id = sc.nextInt();
+
+                if (conf.getSingleValue("SELECT vio_id FROM violation WHERE vio_id = ?", vio_id) != 0) {
+                    break;
+                } else {
+                    System.out.print("ID doesn't exist, Enter Again: ");
+                }
+            } else {
+
+                System.out.print("INVALID INPUT, Enter Again: ");
+                sc.next();
+            }
+        }
         
         sc.nextLine();
-        System.out.print("Enter new Violation Name: ");
-        String vio_name = sc.nextLine();
         
-        System.out.print("Enter new Description: ");
-        String vio_des = sc.nextLine();
+        String vio_name;
+        do {
+            System.out.print("Enter new Violation Name: ");
+            vio_name = sc.nextLine();
+            if (!validator.isValidName(vio_name)) {
+                System.out.println("\tINVALID NAME. Only alphabetic characters are allowed.");
+            }
+        } while (!validator.isValidName(vio_name)); 
         
-        System.out.print("Enter new Severity of Violation: ");
-        String vio_severity = sc.nextLine();
+        String vio_des;
+        do {
+            System.out.print("Enter new Description: ");
+            vio_des = sc.nextLine();
+            if (!validator.isValidName(vio_des)) {
+                System.out.println("\tINVALID DESCRIPTION. Only alphabetic characters are allowed.");
+            }
+        } while (!validator.isValidName(vio_des)); 
         
-        System.out.print("Enter new Sanction: ");
-        String vio_sanction = sc.nextLine();
+        String vio_severity;
+        do {
+            System.out.print("Enter new Severity of Violation: ");
+            vio_severity = sc.nextLine();
+            if (!validator.isValidName(vio_severity)) {
+                System.out.println("\tINVALID SEVERITY. Only alphabetic characters are allowed.");
+            }
+        } while (!validator.isValidName(vio_severity)); 
+        
+        String vio_sanction;
+        do {
+            System.out.print("Enter new Sanction: ");
+            vio_sanction = sc.nextLine();
+            if (!validator.isValidName(vio_sanction)) {
+                System.out.println("\tINVALID SANCTION. Only alphabetic characters are allowed.");
+            }
+        } while (!validator.isValidName(vio_sanction)); 
 
         
         String query = "UPDATE violation SET vio_name = ?, vio_des = ?, vio_severity = ?, vio_sanction = ? WHERE vio_id = ?";
-        
-        config conf = new config();
-        conf.updateRecords(query, vio_name, vio_des, vio_severity, vio_sanction, id);
+        conf.updateRecords(query, vio_name, vio_des, vio_severity, vio_sanction, vio_id);
         
     }
     
     private void deleteViolation(){
     
         Scanner sc = new Scanner (System.in);
+        config conf = new config();
         
         System.out.print("Enter Violation ID to delete: ");
-        int id = sc.nextInt();
+        int vio_id;
         
+        while (true) {
+
+            if (sc.hasNextInt()) {
+                vio_id = sc.nextInt();
+
+                if (conf.getSingleValue("SELECT vio_id FROM violation WHERE vio_id = ?", vio_id) != 0) {
+                    break;
+                } else {
+                    System.out.print("ID doesn't exist, Enter Again: ");
+                }
+            } else {
+
+                System.out.print("INVALID INPUT, Enter Again: ");
+                sc.next();
+            }
+        }
+
         String query = "Delete FROM violation WHERE vio_id = ?";
-       
-        config conf = new config();
-        conf.deleteRecords(query, id);
+        conf.deleteRecords(query, vio_id);
 
     }
     
@@ -84,7 +168,8 @@ public class Violation {
         
         Violation vio = new Violation();
         Scanner input = new Scanner(System.in);
-       
+        validator validator = new validator();
+        int action;
         
         do{    
             System.out.println("1. ADD VIOLATION");
@@ -93,8 +178,22 @@ public class Violation {
             System.out.println("4. VIEW VIOLATION");
             System.out.println("5. EXIT");
 
-            System.out.print("Enter Action: ");
-            int action = input.nextInt();
+            while (true) {
+                System.out.print("Enter Action: ");
+                
+                if (input.hasNextInt()) {
+                    action = input.nextInt();
+                    
+                    if (validator.isValidAction(action)) {
+                        break;
+                    } else {
+                        System.out.println("\tINVALID ACTION. Enter number from 1-5 only.");
+                    }
+                } else {
+                    System.out.println("\tINVALID ACTION. Enter number from 1-5 only.");
+                    input.next();
+                }
+            }
 
             switch(action){
                 case 1:
@@ -114,9 +213,7 @@ public class Violation {
                 case 5:
                     return;
             }
-            
-            
-            
+    
         }while(true);
             
     }
