@@ -3,7 +3,65 @@ package sumbistudvio;
 import java.util.Scanner;
 
 public class Student {
-  
+    
+    public static void main(String[] args) {
+        
+        Student stud = new Student();
+        Scanner input = new Scanner(System.in);
+        validator validator = new validator();
+        int action;
+        String resp;
+
+        do {    
+            System.out.println("1. ADD STUDENT");
+            System.out.println("2. UPDATE STUDENT");
+            System.out.println("3. DELETE STUDENT");
+            System.out.println("4. VIEW STUDENT");
+            System.out.println("5. EXIT");
+       
+            while (true) {
+                System.out.print("Enter Action: ");
+                
+                if (input.hasNextInt()) {
+                    action = input.nextInt();
+                    
+                    if (validator.isValidAction(action)) {
+                        break;
+                    } else {
+                        System.out.println("\tINVALID ACTION. Enter number from 1-5 only.");
+                    }
+                } else {
+                    System.out.println("\tINVALID ACTION. Enter number from 1-5 only.");
+                    input.next();
+                }
+            }
+
+            switch(action) {
+                case 1:
+                    stud.addStudents();
+                    break; 
+                case 2:
+                    stud.viewStudents();
+                    stud.updateStudents();
+                    break;
+                case 3:
+                    stud.viewStudents();
+                    stud.deleteStudents();
+                    break;
+                case 4:
+                    stud.viewStudents();
+                    break;
+                case 5:
+                    return;
+            }
+            
+            System.out.print("Do you want to continue? (yes/no): ");
+            resp = input.next();
+            
+        }while(resp.equalsIgnoreCase("yes"));
+        
+    }
+    
     public void addStudents() {
         Scanner sc = new Scanner(System.in);
         config conf = new config();
@@ -163,62 +221,5 @@ public class Student {
         String query = "Delete FROM student WHERE stud_id = ?";
         conf.deleteRecords(query, stud_id);
     }
-    
-
-    public static void main(String[] args) {
-        
-        Student stud = new Student();
-        Scanner input = new Scanner(System.in);
-        validator validator = new validator();
-        int action;
-
-        do {    
-            System.out.println("1. ADD STUDENT");
-            System.out.println("2. UPDATE STUDENT");
-            System.out.println("3. DELETE STUDENT");
-            System.out.println("4. VIEW STUDENT");
-            System.out.println("5. EXIT");
-       
-            while (true) {
-                System.out.print("Enter Action: ");
-                
-                if (input.hasNextInt()) {
-                    action = input.nextInt();
-                    
-                    if (validator.isValidAction(action)) {
-                        break;
-                    } else {
-                        System.out.println("\tINVALID ACTION. Enter number from 1-5 only.");
-                    }
-                } else {
-                    System.out.println("\tINVALID ACTION. Enter number from 1-5 only.");
-                    input.next();
-                }
-            }
-
-            switch(action) {
-                case 1:
-                    stud.addStudents();
-                    break; 
-                case 2:
-                    stud.viewStudents();
-                    stud.updateStudents();
-                    break;
-                case 3:
-                    stud.viewStudents();
-                    stud.deleteStudents();
-                    break;
-                case 4:
-                    stud.viewStudents();
-                    break;
-                case 5:
-                    return;
-            }
-            
-        } while (true);
-    }
-     
+ 
 }
-
-    
-

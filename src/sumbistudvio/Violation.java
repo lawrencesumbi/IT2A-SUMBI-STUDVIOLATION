@@ -4,7 +4,65 @@ import java.util.Scanner;
 
 public class Violation {
     
-     public void addViolation(){
+    public static void main(String[] args) {
+        
+        Violation vio = new Violation();
+        Scanner input = new Scanner(System.in);
+        validator validator = new validator();
+        int action;
+        String resp;
+        
+        do{    
+            System.out.println("1. ADD VIOLATION");
+            System.out.println("2. UPDATE VIOLATION");
+            System.out.println("3. DELETE VIOLATION");
+            System.out.println("4. VIEW VIOLATION");
+            System.out.println("5. EXIT");
+
+            while (true) {
+                System.out.print("Enter Action: ");
+                
+                if (input.hasNextInt()) {
+                    action = input.nextInt();
+                    
+                    if (validator.isValidAction(action)) {
+                        break;
+                    } else {
+                        System.out.println("\tINVALID ACTION. Enter number from 1-5 only.");
+                    }
+                } else {
+                    System.out.println("\tINVALID ACTION. Enter number from 1-5 only.");
+                    input.next();
+                }
+            }
+
+            switch(action){
+                case 1:
+                    vio.addViolation();
+                break; 
+                case 2:
+                    vio.viewViolation();
+                    vio.updateViolation();
+                break;
+                case 3:
+                    vio.viewViolation();
+                    vio.deleteViolation();
+                    break;
+                case 4:
+                    vio.viewViolation();
+                break;
+                case 5:
+                    return;
+            }
+    
+            System.out.print("Do you want to continue? (yes/no): ");
+            resp = input.next();
+            
+        }while(resp.equalsIgnoreCase("yes"));
+            
+    }
+    
+    public void addViolation(){
         Scanner sc = new Scanner(System.in);
         config conf = new config();
         validator validator = new validator();
@@ -162,60 +220,5 @@ public class Violation {
         conf.deleteRecords(query, vio_id);
 
     }
-    
-
-    public void main(String[] args) {
-        
-        Violation vio = new Violation();
-        Scanner input = new Scanner(System.in);
-        validator validator = new validator();
-        int action;
-        
-        do{    
-            System.out.println("1. ADD VIOLATION");
-            System.out.println("2. UPDATE VIOLATION");
-            System.out.println("3. DELETE VIOLATION");
-            System.out.println("4. VIEW VIOLATION");
-            System.out.println("5. EXIT");
-
-            while (true) {
-                System.out.print("Enter Action: ");
-                
-                if (input.hasNextInt()) {
-                    action = input.nextInt();
-                    
-                    if (validator.isValidAction(action)) {
-                        break;
-                    } else {
-                        System.out.println("\tINVALID ACTION. Enter number from 1-5 only.");
-                    }
-                } else {
-                    System.out.println("\tINVALID ACTION. Enter number from 1-5 only.");
-                    input.next();
-                }
-            }
-
-            switch(action){
-                case 1:
-                    vio.addViolation();
-                break; 
-                case 2:
-                    vio.viewViolation();
-                    vio.updateViolation();
-                break;
-                case 3:
-                    vio.viewViolation();
-                    vio.deleteViolation();
-                    break;
-                case 4:
-                    vio.viewViolation();
-                break;
-                case 5:
-                    return;
-            }
-    
-        }while(true);
-            
-    }
-     
+ 
 }

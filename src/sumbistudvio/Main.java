@@ -22,20 +22,20 @@ public class Main {
             System.out.println("|       4. EXIT             |");
             System.out.println("-----------------------------");
 
-            int choice = -1;
+            int choice = 0;
 
             do {
                 System.out.print("Input Choice: ");
                 if (scanner.hasNextInt()) {
                     choice = scanner.nextInt();
                 } else {
-                    System.out.println("\tINVALID CHOICE. Enter number from 1-4 only.");
+                    System.out.println("\tINVALID CHOICE. Input number from 1-4 only.");
                     scanner.next();
                     continue;
                 }
 
                 if (!validator.isValidChoice(choice)) {
-                    System.out.println("\tINVALID CHOICE. Enter number from 1-4 only.");
+                    System.out.println("\tINVALID CHOICE. Input number from 1-4 only.");
                 }
             } while (!validator.isValidChoice(choice));
 

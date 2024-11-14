@@ -30,7 +30,7 @@ public class validator {
     }
 
     public boolean isValidAddress(String address) {
-        return address.matches("[a-zA-Z\\s]+1") && address.length() > 0;
+        return address.matches("[a-zA-Z\\s]+") && address.length() > 0;
     }
     
     public boolean isValidDate(String date) {

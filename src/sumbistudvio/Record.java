@@ -4,6 +4,68 @@ import java.util.Scanner;
 
 public class Record {
    
+    public static void main(String[] args) {
+        
+        Record rec = new Record();
+        Scanner input = new Scanner(System.in);
+        validator validator = new validator();
+        int action;
+        String resp;
+        
+        do{    
+            System.out.println("1. ADD RECORD");
+            System.out.println("2. UPDATE RECORD");
+            System.out.println("3. DELETE RECORD");
+            System.out.println("4. VIEW ALL RECORDS");
+            System.out.println("5. SEARCH RECORD");
+            System.out.println("6. EXIT");
+
+            while (true) {
+                System.out.print("Enter Action: ");
+                
+                if (input.hasNextInt()) {
+                    action = input.nextInt();
+                    
+                    if (validator.isValidActionRec(action)) {
+                        break;
+                    } else {
+                        System.out.println("\tINVALID ACTION. Enter number from 1-6 only.");
+                    }
+                } else {
+                    System.out.println("\tINVALID ACTION. Enter number from 1-6 only.");
+                    input.next();
+                }
+            }
+
+            switch(action){
+                case 1:
+                    rec.addRecord();
+                break; 
+                case 2:
+                    rec.viewRecord();
+                    rec.updateRecord();
+                break;
+                case 3:
+                    rec.viewRecord();
+                    rec.deleteRecord();
+                    break;
+                case 4:
+                    rec.viewRecord();
+                break;
+                case 5:
+                    rec.searchRecord();
+                break;
+                case 6:
+                    return;
+            }
+            
+            System.out.print("Do you want to continue? (yes/no): ");
+            resp = input.next();
+            
+        }while(resp.equalsIgnoreCase("yes"));
+            
+    }
+    
     public void addRecord() {
         Scanner sc = new Scanner(System.in);
         config conf = new config();
@@ -69,7 +131,7 @@ public class Record {
     }
     
     private void viewRecord() {
-        System.out.println("STUDENT VIOLATION REPORTS:");
+        System.out.println("OVERALL REPORTS:");
         String query = "SELECT record.rec_id, student.stud_name, violation.vio_name, record.rec_reported, record.rec_settled "
                 + "FROM record "
                 + "JOIN student ON record.stud_id = student.stud_id "
@@ -86,6 +148,7 @@ public class Record {
         config conf = new config();
         Student stud = new Student();
         
+        System.out.println("DETAILED REPORT:");
         stud.viewStudents();
         System.out.println("Search a specific student to view their violations...");
         System.out.print("Enter Student ID to search: ");
@@ -108,13 +171,13 @@ public class Record {
             }
         }
         
-        String query = "SELECT record.rec_id, student.stud_name, violation.vio_name, record.rec_reported, record.rec_settled "
+        String query = "SELECT record.rec_id, student.stud_name, violation.vio_name, violation.vio_des, violation.vio_sanction, record.rec_reported, record.rec_settled "
                 + "FROM record "
                 + "JOIN student ON record.stud_id = student.stud_id "
                 + "JOIN violation ON record.vio_id = violation.vio_id "
                 + "WHERE record.stud_id = " + stud_id;
-        String[] headers = {"RECORD ID", "STUDENT NAME", "VIOLATION NAME", "DATE REPORTED", "DATE SETTLED"};
-        String[] columns = {"rec_id", "stud_name", "vio_name", "rec_reported", "rec_settled"};
+        String[] headers = {"RECORD ID", "STUDENT NAME", "VIOLATION NAME", "DESCRIPTION", "SANCTION", "DATE REPORTED", "DATE SETTLED"};
+        String[] columns = {"rec_id", "stud_name", "vio_name", "vio_des", "vio_sanction", "rec_reported", "rec_settled"};
 
         conf.viewRecords(query, headers, columns);
     }
@@ -191,63 +254,6 @@ public class Record {
 
     }
     
-    public void main(String[] args) {
-        
-        Record rec = new Record();
-        Scanner input = new Scanner(System.in);
-        validator validator = new validator();
-        int action;
-        
-        do{    
-            System.out.println("1. ADD RECORD");
-            System.out.println("2. UPDATE RECORD");
-            System.out.println("3. DELETE RECORD");
-            System.out.println("4. VIEW ALL RECORDS");
-            System.out.println("5. SEARCH RECORD");
-            System.out.println("6. EXIT");
-
-            while (true) {
-                System.out.print("Enter Action: ");
-                
-                if (input.hasNextInt()) {
-                    action = input.nextInt();
-                    
-                    if (validator.isValidActionRec(action)) {
-                        break;
-                    } else {
-                        System.out.println("\tINVALID ACTION. Enter number from 1-6 only.");
-                    }
-                } else {
-                    System.out.println("\tINVALID ACTION. Enter number from 1-6 only.");
-                    input.next();
-                }
-            }
-
-            switch(action){
-                case 1:
-                    rec.addRecord();
-                break; 
-                case 2:
-                    rec.viewRecord();
-                    rec.updateRecord();
-                break;
-                case 3:
-                    rec.viewRecord();
-                    rec.deleteRecord();
-                    break;
-                case 4:
-                    rec.viewRecord();
-                break;
-                case 5:
-                    rec.searchRecord();
-                break;
-                case 6:
-                    return;
-            }
-            
-            
-        }while(true);
-            
-    }
+    
     
 }
