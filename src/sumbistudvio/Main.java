@@ -29,12 +29,12 @@ public class Main {
                 if (scanner.hasNextInt()) {
                     choice = scanner.nextInt();
                 } else {
-                    System.out.println("\tInvalid input, only integers are allowed.\n");
+                    System.out.println("\tInvalid input, only integers are allowed.");
                     scanner.next();
                     continue;
                 }
                 if (!validator.isValidChoice(choice)) {
-                    System.out.println("\tInvalid number, input (1-4) only.\n");
+                    System.out.println("\tInvalid number, input (1-4) only.");
                 }
                 
             } while (!validator.isValidChoice(choice));
@@ -53,7 +53,7 @@ public class Main {
                     record.main(args);
                     break;
                 case 4:
-                    System.out.println("Thank you for using the Student Violation System. Have a great day!");
+                    System.out.println("\nThank you for using the Student Violation System. Have a great day!");
                     System.exit(0);
                     break;
                 default:
@@ -71,6 +71,6 @@ public class Main {
             
         } while (resp.equalsIgnoreCase("yes"));
         
-        System.out.println("Thank you for using the Student Violation System. Have a great day!");
+        System.out.println("\nThank you for using the Student Violation System. Have a great day!");
     }
 }

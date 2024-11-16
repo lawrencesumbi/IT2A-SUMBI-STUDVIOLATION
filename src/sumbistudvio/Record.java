@@ -31,10 +31,10 @@ public class Record {
                     if (validator.isValidActionRec(action)) {
                         break;
                     } else {
-                        System.out.println("\tINVALID ACTION. Enter number from 1-6 only.");
+                        System.out.println("\tInvalid number, enter (1-6) only.");
                     }
                 } else {
-                    System.out.println("\tINVALID ACTION. Enter number from 1-6 only.");
+                    System.out.println("\tInvalid input, only integers are allowed.");
                     input.next();
                 }
             }
@@ -71,7 +71,7 @@ public class Record {
             
         }while(resp.equalsIgnoreCase("yes"));
         
-        System.out.println("Thank you for using the Student Violation System. Have a great day!");
+        System.out.println("\nThank you for using the Student Violation System. Have a great day!");
         System.exit(0);
     }
     
@@ -98,7 +98,7 @@ public class Record {
                 }
             } else {
 
-                System.out.print("INVALID INPUT, Enter Again: ");
+                System.out.print("Invalid Input, Enter Again: ");
                 sc.next();
             }
         }
@@ -119,7 +119,7 @@ public class Record {
                 }
             } else {
 
-                System.out.print("INVALID INPUT, Enter Again: ");
+                System.out.print("Invalid Input, Enter Again: ");
                 sc.next();
             }
         }
@@ -128,7 +128,7 @@ public class Record {
         String rec_reported = sc.next();
     
         while (!validator.isValidDate(rec_reported)) {
-            System.out.print("INVALID DATE. Follow this format (MM-DD-YYYY): ");
+            System.out.print("Invalid Date Format. Enter Again: ");
             rec_reported = sc.next();
         }
 
@@ -174,7 +174,7 @@ public class Record {
                 }
             } else {
 
-                System.out.print("INVALID INPUT, Enter Again: ");
+                System.out.print("Invalid Input, Enter Again: ");
                 sc.next();
             }
         }
@@ -212,7 +212,7 @@ public class Record {
                 }
             } else {
 
-                System.out.print("INVALID INPUT, Enter Again: ");
+                System.out.print("Invalid Input, Enter Again: ");
                 sc.next();
             }
         }
@@ -222,7 +222,7 @@ public class Record {
         String rec_settled = sc.next();
     
         while (!validator.isValidDate(rec_settled)) {
-            System.out.print("INVALID DATE. Follow this format (MM-DD-YYYY): ");
+            System.out.print("Invalid Date Format. Enter Again: ");
             rec_settled = sc.next();
         }
          
@@ -252,7 +252,7 @@ public class Record {
                 }
             } else {
 
-                System.out.print("INVALID INPUT, Enter Again: ");
+                System.out.print("Invalid Input, Enter Again: ");
                 sc.next();
             }
         }

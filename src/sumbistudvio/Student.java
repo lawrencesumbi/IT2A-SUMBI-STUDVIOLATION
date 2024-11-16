@@ -30,10 +30,10 @@ public class Student {
                     if (validator.isValidAction(action)) {
                         break;
                     } else {
-                        System.out.println("\tINVALID ACTION. Enter number from 1-5 only.");
+                        System.out.println("\tInvalid number, enter (1-5) only.");
                     }
                 } else {
-                    System.out.println("\tINVALID ACTION. Enter number from 1-5 only.");
+                    System.out.println("\tInvalid input, only integers are allowed.");
                     input.next();
                 }
             }
@@ -67,7 +67,7 @@ public class Student {
             
         }while(resp.equalsIgnoreCase("yes"));
         
-        System.out.println("Thank you for using the Student Violation System. Have a great day!");
+        System.out.println("\nThank you for using the Student Violation System. Have a great day!");
         System.exit(0);
     }
     
@@ -81,7 +81,7 @@ public class Student {
             System.out.print("Enter Student Full Name: ");
             stud_name = sc.nextLine();
             if (!validator.isValidName(stud_name)) {
-                System.out.println("\tINVALID NAME. Only alphabetic characters are allowed.");
+                System.out.println("\tInvalid name, only alphabetic characters are allowed.");
             }
         } while (!validator.isValidName(stud_name));
         
@@ -90,7 +90,7 @@ public class Student {
             System.out.print("Enter Student Program: ");
             stud_program = sc.next();
             if (!validator.isValidProgram(stud_program)) {
-                System.out.println("\tINVALID PROGRAM. Follow this format (BSIT).");
+                System.out.println("\tInvalid program, follow this format (BSIT).");
             }
         } while (!validator.isValidProgram(stud_program));
         
@@ -99,7 +99,7 @@ public class Student {
             System.out.print("Enter Student Section: ");
             stud_section = sc.next();
             if (!validator.isValidSection(stud_section)) {
-                System.out.println("\tINVALID SECTION. Follow this format (2A).");
+                System.out.println("\tInvalid section, follow this format (2A).");
             }
         } while (!validator.isValidSection(stud_section));
         
@@ -110,7 +110,7 @@ public class Student {
             System.out.print("Enter Student Address: ");
             stud_address = sc.nextLine();
             if (!validator.isValidAddress(stud_address)) {
-                System.out.println("\tINVALID ADDRESS. Only alphabetic characters are allowed.");
+                System.out.println("\tInvalid address, only alphabetic characters are allowed.");
             }
         } while (!validator.isValidAddress(stud_address));
 
@@ -150,7 +150,7 @@ public class Student {
                 }
             } else {
 
-                System.out.print("INVALID INPUT, Enter Again: ");
+                System.out.print("Invalid Input, Enter Again: ");
                 sc.next();
             }
         }
@@ -162,7 +162,7 @@ public class Student {
             System.out.print("Enter new Student Full Name: ");
             new_name = sc.nextLine();
             if (!validator.isValidName(new_name)) {
-                System.out.println("\tINVALID NAME. Only alphabetic characters are allowed.");
+                System.out.println("\tInvalid name, only alphabetic characters are allowed.");
             }
         } while (!validator.isValidName(new_name));
         
@@ -171,7 +171,7 @@ public class Student {
             System.out.print("Enter new Student Program: ");
             new_program = sc.next();
             if (!validator.isValidProgram(new_program)) {
-                System.out.println("\tINVALID PROGRAM. Follow this format (BSIT).");
+                System.out.println("\tInvalid program, follow this format (BSIT).");
             }
         } while (!validator.isValidProgram(new_program));
         
@@ -180,7 +180,7 @@ public class Student {
             System.out.print("Enter new Student Section: ");
             new_section = sc.next();
             if (!validator.isValidSection(new_section)) {
-                System.out.println("\tINVALID SECTION. Follow this format (2A).");
+                System.out.println("\tInvalid section, follow this format (2A).");
             }
         } while (!validator.isValidSection(new_section));
         
@@ -191,7 +191,7 @@ public class Student {
             System.out.print("Enter new Student Address: ");
             new_address = sc.nextLine();
             if (!validator.isValidAddress(new_address)) {
-                System.out.println("\tINVALID ADDRESS. Only alphabetic characters are allowed.");
+                System.out.println("\tInvalid address, only alphabetic characters are allowed.");
             }
         } while (!validator.isValidAddress(new_address));
         
@@ -222,7 +222,7 @@ public class Student {
                 }
             } else {
 
-                System.out.print("INVALID INPUT, Enter Again: ");
+                System.out.print("Invalid Input, Enter Again: ");
                 sc.next();
             }
         }

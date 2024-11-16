@@ -30,10 +30,10 @@ public class Violation {
                     if (validator.isValidAction(action)) {
                         break;
                     } else {
-                        System.out.println("\tINVALID ACTION. Enter number from 1-5 only.");
+                        System.out.println("\tInvalid number, enter (1-5) only.");
                     }
                 } else {
-                    System.out.println("\tINVALID ACTION. Enter number from 1-5 only.");
+                    System.out.println("\tInvalid input, only integers are allowed.");
                     input.next();
                 }
             }
@@ -67,7 +67,7 @@ public class Violation {
             
         }while(resp.equalsIgnoreCase("yes"));
         
-        System.out.println("Thank you for using the Student Violation System. Have a great day!");
+        System.out.println("\nThank you for using the Student Violation System. Have a great day!");
         System.exit(0);
     }
     
@@ -81,7 +81,7 @@ public class Violation {
             System.out.print("Enter Violation Name: ");
             vio_name = sc.nextLine();
             if (!validator.isValidName(vio_name)) {
-                System.out.println("\tINVALID NAME. Only alphabetic characters are allowed.");
+                System.out.println("\tInvalid name, only alphabetic characters are allowed.");
             }
         } while (!validator.isValidName(vio_name)); 
         
@@ -90,7 +90,7 @@ public class Violation {
             System.out.print("Enter Description: ");
             vio_des = sc.nextLine();
             if (!validator.isValidName(vio_des)) {
-                System.out.println("\tINVALID DESCRIPTION. Only alphabetic characters are allowed.");
+                System.out.println("\tInvalid description, only alphabetic characters are allowed.");
             }
         } while (!validator.isValidName(vio_des)); 
         
@@ -99,7 +99,7 @@ public class Violation {
             System.out.print("Enter Severity of Violation: ");
             vio_severity = sc.nextLine();
             if (!validator.isValidName(vio_severity)) {
-                System.out.println("\tINVALID SEVERITY. Only alphabetic characters are allowed.");
+                System.out.println("\tInvalid severity, only alphabetic characters are allowed.");
             }
         } while (!validator.isValidName(vio_severity)); 
         
@@ -108,7 +108,7 @@ public class Violation {
             System.out.print("Enter Sanction: ");
             vio_sanction = sc.nextLine();
             if (!validator.isValidName(vio_sanction)) {
-                System.out.println("\tINVALID SANCTION. Only alphabetic characters are allowed.");
+                System.out.println("\tInvalid sanction, only alphabetic characters are allowed.");
             }
         } while (!validator.isValidName(vio_sanction)); 
 
@@ -151,7 +151,7 @@ public class Violation {
                 }
             } else {
 
-                System.out.print("INVALID INPUT, Enter Again: ");
+                System.out.print("Invalid Input, Enter Again: ");
                 sc.next();
             }
         }
@@ -163,7 +163,7 @@ public class Violation {
             System.out.print("Enter new Violation Name: ");
             vio_name = sc.nextLine();
             if (!validator.isValidName(vio_name)) {
-                System.out.println("\tINVALID NAME. Only alphabetic characters are allowed.");
+                System.out.println("\tInvalid name, only alphabetic characters are allowed.");
             }
         } while (!validator.isValidName(vio_name)); 
         
@@ -172,7 +172,7 @@ public class Violation {
             System.out.print("Enter new Description: ");
             vio_des = sc.nextLine();
             if (!validator.isValidName(vio_des)) {
-                System.out.println("\tINVALID DESCRIPTION. Only alphabetic characters are allowed.");
+                System.out.println("\tInvalid description, only alphabetic characters are allowed.");
             }
         } while (!validator.isValidName(vio_des)); 
         
@@ -181,7 +181,7 @@ public class Violation {
             System.out.print("Enter new Severity of Violation: ");
             vio_severity = sc.nextLine();
             if (!validator.isValidName(vio_severity)) {
-                System.out.println("\tINVALID SEVERITY. Only alphabetic characters are allowed.");
+                System.out.println("\tInvalid severity, only alphabetic characters are allowed.");
             }
         } while (!validator.isValidName(vio_severity)); 
         
@@ -190,7 +190,7 @@ public class Violation {
             System.out.print("Enter new Sanction: ");
             vio_sanction = sc.nextLine();
             if (!validator.isValidName(vio_sanction)) {
-                System.out.println("\tINVALID SANCTION. Only alphabetic characters are allowed.");
+                System.out.println("\tInvalid sanction, only alphabetic characters are allowed.");
             }
         } while (!validator.isValidName(vio_sanction)); 
 
@@ -220,7 +220,7 @@ public class Violation {
                 }
             } else {
 
-                System.out.print("INVALID INPUT, Enter Again: ");
+                System.out.print("Invalid Input, Enter Again: ");
                 sc.next();
             }
         }
