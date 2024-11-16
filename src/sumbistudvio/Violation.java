@@ -13,11 +13,13 @@ public class Violation {
         String resp;
         
         do{    
-            System.out.println("1. ADD VIOLATION");
-            System.out.println("2. UPDATE VIOLATION");
-            System.out.println("3. DELETE VIOLATION");
-            System.out.println("4. VIEW VIOLATION");
-            System.out.println("5. EXIT");
+            System.out.println("-----------------------------");
+            System.out.println("|    1. ADD Violation       |");
+            System.out.println("|    2. UPDATE Violation    |");
+            System.out.println("|    3. DELETE Violation    |");
+            System.out.println("|    4. VIEW Violation      |");
+            System.out.println("|    5. EXIT Violation      |");
+            System.out.println("-----------------------------");
 
             while (true) {
                 System.out.print("Enter Action: ");
@@ -58,8 +60,15 @@ public class Violation {
             System.out.print("Do you want to continue? (yes/no): ");
             resp = input.next();
             
-        }while(resp.equalsIgnoreCase("yes"));
+            while (!resp.equalsIgnoreCase("yes") && !resp.equalsIgnoreCase("no")) {
+                System.out.print("Invalid Input, Enter Again: ");
+                resp = input.next();
+            }
             
+        }while(resp.equalsIgnoreCase("yes"));
+        
+        System.out.println("Thank you for using the Student Violation System. Have a great day!");
+        System.exit(0);
     }
     
     public void addViolation(){

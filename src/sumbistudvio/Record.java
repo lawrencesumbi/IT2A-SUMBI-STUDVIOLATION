@@ -13,12 +13,14 @@ public class Record {
         String resp;
         
         do{    
-            System.out.println("1. ADD RECORD");
-            System.out.println("2. UPDATE RECORD");
-            System.out.println("3. DELETE RECORD");
-            System.out.println("4. VIEW ALL RECORDS");
-            System.out.println("5. SEARCH RECORD");
-            System.out.println("6. EXIT");
+            System.out.println("-----------------------------");
+            System.out.println("|    1. ADD Record          |");
+            System.out.println("|    2. UPDATE Record       |");
+            System.out.println("|    3. DELETE Record       |");
+            System.out.println("|    4. VIEW All Record     |");
+            System.out.println("|    5. SEARCH Record       |");
+            System.out.println("|    6. EXIT Record         |");
+            System.out.println("-----------------------------");
 
             while (true) {
                 System.out.print("Enter Action: ");
@@ -62,8 +64,15 @@ public class Record {
             System.out.print("Do you want to continue? (yes/no): ");
             resp = input.next();
             
-        }while(resp.equalsIgnoreCase("yes"));
+            while (!resp.equalsIgnoreCase("yes") && !resp.equalsIgnoreCase("no")) {
+                System.out.print("Invalid Input, Enter Again: ");
+                resp = input.next();
+            }
             
+        }while(resp.equalsIgnoreCase("yes"));
+        
+        System.out.println("Thank you for using the Student Violation System. Have a great day!");
+        System.exit(0);
     }
     
     public void addRecord() {
@@ -148,7 +157,6 @@ public class Record {
         config conf = new config();
         Student stud = new Student();
         
-        System.out.println("DETAILED REPORT:");
         stud.viewStudents();
         System.out.println("Search a specific student to view their violations...");
         System.out.print("Enter Student ID to search: ");
@@ -171,6 +179,7 @@ public class Record {
             }
         }
         
+        System.out.println("DETAILED REPORT:");       
         String query = "SELECT record.rec_id, student.stud_name, violation.vio_name, violation.vio_des, violation.vio_sanction, record.rec_reported, record.rec_settled "
                 + "FROM record "
                 + "JOIN student ON record.stud_id = student.stud_id "

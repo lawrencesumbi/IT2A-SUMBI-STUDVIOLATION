@@ -12,14 +12,14 @@ public class Main {
 
         do {
             System.out.println("-----------------------------");
-            System.out.println("|     STUDENT VIOLATION     |");
-            System.out.println("|          SYSTEM           |");
+            System.out.println("*     STUDENT VIOLATION     *");
+            System.out.println("*          SYSTEM           *");
             System.out.println("-----------------------------");
-            System.out.println("|       SELECT CHOICE       |");
-            System.out.println("|       1. STUDENT          |");
-            System.out.println("|       2. VIOLATION        |");
-            System.out.println("|       3. RECORD           |");
-            System.out.println("|       4. EXIT             |");
+            System.out.println("*       SELECT CHOICE       *");
+            System.out.println("*       1. STUDENT          *");
+            System.out.println("*       2. VIOLATION        *");
+            System.out.println("*       3. RECORD           *");
+            System.out.println("*       4. EXIT             *");
             System.out.println("-----------------------------");
 
             int choice = 0;
@@ -29,14 +29,14 @@ public class Main {
                 if (scanner.hasNextInt()) {
                     choice = scanner.nextInt();
                 } else {
-                    System.out.println("\tINVALID CHOICE. Input number from 1-4 only.");
+                    System.out.println("\tInvalid input, only integers are allowed.\n");
                     scanner.next();
                     continue;
                 }
-
                 if (!validator.isValidChoice(choice)) {
-                    System.out.println("\tINVALID CHOICE. Input number from 1-4 only.");
+                    System.out.println("\tInvalid number, input (1-4) only.\n");
                 }
+                
             } while (!validator.isValidChoice(choice));
 
             switch (choice) {
@@ -53,7 +53,7 @@ public class Main {
                     record.main(args);
                     break;
                 case 4:
-                    System.out.println("Thank You for using my system. Have a nice day!");
+                    System.out.println("Thank you for using the Student Violation System. Have a great day!");
                     System.exit(0);
                     break;
                 default:
@@ -64,9 +64,13 @@ public class Main {
             System.out.print("Do you want to continue? (yes/no): ");
             resp = scanner.next();
             
+            while (!resp.equalsIgnoreCase("yes") && !resp.equalsIgnoreCase("no")) {
+                System.out.print("Invalid Input, Enter Again: ");
+                resp = scanner.next();
+            }
+            
         } while (resp.equalsIgnoreCase("yes"));
-
-        System.out.println("Thank You for using my system. Have a nice day!");
-        scanner.close();
+        
+        System.out.println("Thank you for using the Student Violation System. Have a great day!");
     }
 }
