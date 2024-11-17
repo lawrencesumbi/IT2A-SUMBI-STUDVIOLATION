@@ -1,6 +1,8 @@
 package sumbistudvio;
 
 import java.util.Scanner;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Record {
    
@@ -122,13 +124,9 @@ public class Record {
             }
         }
         
-        System.out.print("Enter Date Reported (MM-DD-YYYY): ");
-        String rec_reported = sc.next();
-    
-        while (!config.isValidDate(rec_reported)) {
-            System.out.print("Invalid Date Format. Enter Again: ");
-            rec_reported = sc.next();
-        }
+        LocalDate currdate = LocalDate.now();
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("MM-dd-yy");
+        String rec_reported = currdate.format(format);
 
         String rec_settled = "ON GOING";
         
@@ -214,14 +212,9 @@ public class Record {
             }
         }
         
-        sc.nextLine(); 
-        System.out.print("Enter new Date Settled (MM-DD-YYYY): ");
-        String rec_settled = sc.next();
-    
-        while (!config.isValidDate(rec_settled)) {
-            System.out.print("Invalid Date Format. Enter Again: ");
-            rec_settled = sc.next();
-        }
+        LocalDate currdate = LocalDate.now();
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("MM-dd-yy");
+        String rec_settled = currdate.format(format);
          
         String query = "UPDATE record SET rec_settled = ? WHERE rec_id = ?";
         

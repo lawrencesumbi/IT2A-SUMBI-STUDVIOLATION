@@ -5,8 +5,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 
 public class config {
     
@@ -179,18 +177,5 @@ public class config {
         }
     }
     
-    
-    public static boolean isValidDate(String date) {
-        String datePattern = "MM-dd-yyyy";
-        SimpleDateFormat sdf = new SimpleDateFormat(datePattern);
-        sdf.setLenient(false);
-
-        try {
-            sdf.parse(date);
-            return true;
-        } catch (ParseException e) {
-            return false;
-        }
-    }
     
 }
