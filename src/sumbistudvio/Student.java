@@ -8,7 +8,6 @@ public class Student {
         
         Student stud = new Student();
         Scanner input = new Scanner(System.in);
-        validator validator = new validator();
         int action;
         String resp;
 
@@ -27,7 +26,7 @@ public class Student {
                 if (input.hasNextInt()) {
                     action = input.nextInt();
                     
-                    if (validator.isValidAction(action)) {
+                    if (action >= 1 && action <= 5) {
                         break;
                     } else {
                         System.out.println("\tInvalid number, enter (1-5) only.");
@@ -74,45 +73,46 @@ public class Student {
     public void addStudents() {
         Scanner sc = new Scanner(System.in);
         config conf = new config();
-        validator validator = new validator();
         
         String stud_name;
-        do {
+        while (true) {
             System.out.print("Enter Student Full Name: ");
             stud_name = sc.nextLine();
-            if (!validator.isValidName(stud_name)) {
-                System.out.println("\tInvalid name, only alphabetic characters are allowed.");
+            if (stud_name.matches("[a-zA-Z\\s]+")){
+                break;
             }
-        } while (!validator.isValidName(stud_name));
+            System.out.println("\tInvalid name, only alphabetic characters are allowed.");
+        }
         
         String stud_program;
-        do {
+        while (true) {
             System.out.print("Enter Student Program: ");
-            stud_program = sc.next();
-            if (!validator.isValidProgram(stud_program)) {
-                System.out.println("\tInvalid program, follow this format (BSIT).");
+            stud_program = sc.nextLine();
+            if (stud_program.matches("[A-Z]+")){
+                break;
             }
-        } while (!validator.isValidProgram(stud_program));
+            System.out.println("\tInvalid program, follow this format (BSIT).");
+        }
         
         String stud_section;
-        do {
+        while (true) {
             System.out.print("Enter Student Section: ");
-            stud_section = sc.next();
-            if (!validator.isValidSection(stud_section)) {
-                System.out.println("\tInvalid section, follow this format (2A).");
+            stud_section = sc.nextLine();
+            if (stud_section.matches("[0-9][A-Z]")){
+                break;
             }
-        } while (!validator.isValidSection(stud_section));
-        
-        sc.nextLine();
+            System.out.println("\tInvalid section, follow this format (2A).");
+        }
         
         String stud_address;
-        do {
+        while (true) {
             System.out.print("Enter Student Address: ");
             stud_address = sc.nextLine();
-            if (!validator.isValidAddress(stud_address)) {
-                System.out.println("\tInvalid address, only alphabetic characters are allowed.");
+            if (stud_address.matches("[a-zA-Z\\s]+")){
+                break;
             }
-        } while (!validator.isValidAddress(stud_address));
+            System.out.println("\tInvalid address, only alphabetic characters are allowed.");
+        }
 
         String sql = "INSERT INTO student (stud_name, stud_program, stud_section, stud_address) VALUES (?, ?, ?, ?)";
         conf.addRecords(sql, stud_name, stud_program, stud_section, stud_address);
@@ -133,7 +133,6 @@ public class Student {
     
         Scanner sc = new Scanner(System.in);
         config conf = new config();
-        validator validator = new validator();
 
         System.out.print("Enter Student ID to update: ");
         int stud_id;
@@ -158,42 +157,44 @@ public class Student {
         sc.nextLine();
         
         String new_name;
-        do {
-            System.out.print("Enter new Student Full Name: ");
+        while (true) {
+            System.out.print("Enter New Student Full Name: ");
             new_name = sc.nextLine();
-            if (!validator.isValidName(new_name)) {
-                System.out.println("\tInvalid name, only alphabetic characters are allowed.");
+            if (new_name.matches("[a-zA-Z\\s]+")){
+                break;
             }
-        } while (!validator.isValidName(new_name));
+            System.out.println("\tInvalid name, only alphabetic characters are allowed.");
+        }
         
         String new_program;
-        do {
-            System.out.print("Enter new Student Program: ");
-            new_program = sc.next();
-            if (!validator.isValidProgram(new_program)) {
-                System.out.println("\tInvalid program, follow this format (BSIT).");
+        while (true) {
+            System.out.print("Enter New Student Program: ");
+            new_program = sc.nextLine();
+            if (new_program.matches("[A-Z]+")){
+                break;
             }
-        } while (!validator.isValidProgram(new_program));
+            System.out.println("\tInvalid program, follow this format (BSIT).");
+        }
         
         String new_section;
-        do {
-            System.out.print("Enter new Student Section: ");
-            new_section = sc.next();
-            if (!validator.isValidSection(new_section)) {
-                System.out.println("\tInvalid section, follow this format (2A).");
+        while (true) {
+            System.out.print("Enter New Student Section: ");
+            new_section = sc.nextLine();
+            if (new_section.matches("[0-9][A-Z]")){
+                break;
             }
-        } while (!validator.isValidSection(new_section));
-        
-        sc.nextLine();
+            System.out.println("\tInvalid section, follow this format (2A).");
+        }
         
         String new_address;
-        do {
-            System.out.print("Enter new Student Address: ");
+        while (true) {
+            System.out.print("Enter New Student Address: ");
             new_address = sc.nextLine();
-            if (!validator.isValidAddress(new_address)) {
-                System.out.println("\tInvalid address, only alphabetic characters are allowed.");
+            if (new_address.matches("[a-zA-Z\\s]+")){
+                break;
             }
-        } while (!validator.isValidAddress(new_address));
+            System.out.println("\tInvalid address, only alphabetic characters are allowed.");
+        }
         
         
         String query = "UPDATE student SET stud_name = ?, stud_program = ?, stud_section = ?, stud_address = ? WHERE stud_id = ?";

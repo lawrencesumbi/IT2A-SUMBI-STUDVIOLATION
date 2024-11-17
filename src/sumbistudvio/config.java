@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 public class config {
     
@@ -124,8 +126,7 @@ public class config {
         
     }
 
-    
-    
+       
     public void updateRecords(String sql, Object... values) {
         try (Connection conn = this.connectDB();
             PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -175,6 +176,20 @@ public class config {
             System.out.println("Record deleted successfully!");
         } catch (SQLException e) {
             System.out.println("Error deleting record: " + e.getMessage());
+        }
+    }
+    
+    
+    public static boolean isValidDate(String date) {
+        String datePattern = "MM-dd-yyyy";
+        SimpleDateFormat sdf = new SimpleDateFormat(datePattern);
+        sdf.setLenient(false);
+
+        try {
+            sdf.parse(date);
+            return true;
+        } catch (ParseException e) {
+            return false;
         }
     }
     

@@ -8,7 +8,6 @@ public class Violation {
         
         Violation vio = new Violation();
         Scanner input = new Scanner(System.in);
-        validator validator = new validator();
         int action;
         String resp;
         
@@ -27,7 +26,7 @@ public class Violation {
                 if (input.hasNextInt()) {
                     action = input.nextInt();
                     
-                    if (validator.isValidAction(action)) {
+                    if (action >= 1 && action <= 5) {
                         break;
                     } else {
                         System.out.println("\tInvalid number, enter (1-5) only.");
@@ -74,43 +73,46 @@ public class Violation {
     public void addViolation(){
         Scanner sc = new Scanner(System.in);
         config conf = new config();
-        validator validator = new validator();
         
         String vio_name;
-        do {
+        while (true) {
             System.out.print("Enter Violation Name: ");
             vio_name = sc.nextLine();
-            if (!validator.isValidName(vio_name)) {
-                System.out.println("\tInvalid name, only alphabetic characters are allowed.");
+            if (vio_name.matches("[a-zA-Z\\s]+")){
+                break;
             }
-        } while (!validator.isValidName(vio_name)); 
+            System.out.println("\tInvalid name, only alphabetic characters are allowed.");
+        }
         
         String vio_des;
-        do {
+        while (true) {
             System.out.print("Enter Description: ");
             vio_des = sc.nextLine();
-            if (!validator.isValidName(vio_des)) {
-                System.out.println("\tInvalid description, only alphabetic characters are allowed.");
+            if (vio_des.matches("[a-zA-Z\\s]+")){
+                break;
             }
-        } while (!validator.isValidName(vio_des)); 
+            System.out.println("\tInvalid description, only alphabetic characters are allowed.");
+        }
         
         String vio_severity;
-        do {
+        while (true) {
             System.out.print("Enter Severity of Violation: ");
             vio_severity = sc.nextLine();
-            if (!validator.isValidName(vio_severity)) {
-                System.out.println("\tInvalid severity, only alphabetic characters are allowed.");
+            if (vio_severity.matches("[a-zA-Z\\s]+")){
+                break;
             }
-        } while (!validator.isValidName(vio_severity)); 
+            System.out.println("\tInvalid severity, only alphabetic characters are allowed.");
+        }
         
         String vio_sanction;
-        do {
+        while (true) {
             System.out.print("Enter Sanction: ");
             vio_sanction = sc.nextLine();
-            if (!validator.isValidName(vio_sanction)) {
-                System.out.println("\tInvalid sanction, only alphabetic characters are allowed.");
+            if (vio_sanction.matches("[a-zA-Z\\s]+")){
+                break;
             }
-        } while (!validator.isValidName(vio_sanction)); 
+            System.out.println("\tInvalid sanction, only alphabetic characters are allowed.");
+        }
 
         
         String sql = "INSERT INTO violation (vio_name, vio_des, vio_severity, vio_sanction) VALUES (?, ?, ?, ?)";
@@ -134,7 +136,6 @@ public class Violation {
     
         Scanner sc = new Scanner(System.in);
         config conf = new config();
-        validator validator = new validator();
         
         System.out.print("Enter Violation ID to update: ");
         int vio_id;
@@ -159,40 +160,44 @@ public class Violation {
         sc.nextLine();
         
         String vio_name;
-        do {
-            System.out.print("Enter new Violation Name: ");
+        while (true) {
+            System.out.print("Enter New Violation Name: ");
             vio_name = sc.nextLine();
-            if (!validator.isValidName(vio_name)) {
-                System.out.println("\tInvalid name, only alphabetic characters are allowed.");
+            if (vio_name.matches("[a-zA-Z\\s]+")){
+                break;
             }
-        } while (!validator.isValidName(vio_name)); 
+            System.out.println("\tInvalid name, only alphabetic characters are allowed.");
+        }
         
         String vio_des;
-        do {
-            System.out.print("Enter new Description: ");
+        while (true) {
+            System.out.print("Enter New Description: ");
             vio_des = sc.nextLine();
-            if (!validator.isValidName(vio_des)) {
-                System.out.println("\tInvalid description, only alphabetic characters are allowed.");
+            if (vio_des.matches("[a-zA-Z\\s]+")){
+                break;
             }
-        } while (!validator.isValidName(vio_des)); 
+            System.out.println("\tInvalid description, only alphabetic characters are allowed.");
+        }
         
         String vio_severity;
-        do {
-            System.out.print("Enter new Severity of Violation: ");
+        while (true) {
+            System.out.print("Enter New Severity of Violation: ");
             vio_severity = sc.nextLine();
-            if (!validator.isValidName(vio_severity)) {
-                System.out.println("\tInvalid severity, only alphabetic characters are allowed.");
+            if (vio_severity.matches("[a-zA-Z\\s]+")){
+                break;
             }
-        } while (!validator.isValidName(vio_severity)); 
+            System.out.println("\tInvalid severity, only alphabetic characters are allowed.");
+        }
         
         String vio_sanction;
-        do {
-            System.out.print("Enter new Sanction: ");
+        while (true) {
+            System.out.print("Enter New Sanction: ");
             vio_sanction = sc.nextLine();
-            if (!validator.isValidName(vio_sanction)) {
-                System.out.println("\tInvalid sanction, only alphabetic characters are allowed.");
+            if (vio_sanction.matches("[a-zA-Z\\s]+")){
+                break;
             }
-        } while (!validator.isValidName(vio_sanction)); 
+            System.out.println("\tInvalid sanction, only alphabetic characters are allowed.");
+        }
 
         
         String query = "UPDATE violation SET vio_name = ?, vio_des = ?, vio_severity = ?, vio_sanction = ? WHERE vio_id = ?";

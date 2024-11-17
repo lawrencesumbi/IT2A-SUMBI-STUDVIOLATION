@@ -7,7 +7,6 @@ public class Main {
     public static void main(String[] args) {
        
         Scanner scanner = new Scanner(System.in);
-        validator validator = new validator();
         String resp;
 
         do {
@@ -33,11 +32,11 @@ public class Main {
                     scanner.next();
                     continue;
                 }
-                if (!validator.isValidChoice(choice)) {
+                if (!(choice >= 1 && choice <= 4)) {
                     System.out.println("\tInvalid number, input (1-4) only.");
                 }
                 
-            } while (!validator.isValidChoice(choice));
+            } while (!(choice >= 1 && choice <= 4));
 
             switch (choice) {
                 case 1:
@@ -57,7 +56,7 @@ public class Main {
                     System.exit(0);
                     break;
                 default:
-                    System.out.println("\tInvalid choice");
+                    System.out.println("\tInvalid Choice");
                     break;
             }
 

@@ -8,7 +8,6 @@ public class Record {
         
         Record rec = new Record();
         Scanner input = new Scanner(System.in);
-        validator validator = new validator();
         int action;
         String resp;
         
@@ -28,7 +27,7 @@ public class Record {
                 if (input.hasNextInt()) {
                     action = input.nextInt();
                     
-                    if (validator.isValidActionRec(action)) {
+                    if (action >= 1 && action <= 6) {
                         break;
                     } else {
                         System.out.println("\tInvalid number, enter (1-6) only.");
@@ -80,7 +79,6 @@ public class Record {
         config conf = new config();
         Student stud = new Student();
         Violation vio = new Violation();
-        validator validator = new validator();
 
         stud.viewStudents();
         System.out.print("Enter Student ID to add: ");
@@ -127,7 +125,7 @@ public class Record {
         System.out.print("Enter Date Reported (MM-DD-YYYY): ");
         String rec_reported = sc.next();
     
-        while (!validator.isValidDate(rec_reported)) {
+        while (!config.isValidDate(rec_reported)) {
             System.out.print("Invalid Date Format. Enter Again: ");
             rec_reported = sc.next();
         }
@@ -195,7 +193,6 @@ public class Record {
     
         Scanner sc = new Scanner(System.in);
         config conf = new config();
-        validator validator = new validator();
         
         System.out.print("Enter Record ID to update: ");
         int rec_id;
@@ -221,7 +218,7 @@ public class Record {
         System.out.print("Enter new Date Settled (MM-DD-YYYY): ");
         String rec_settled = sc.next();
     
-        while (!validator.isValidDate(rec_settled)) {
+        while (!config.isValidDate(rec_settled)) {
             System.out.print("Invalid Date Format. Enter Again: ");
             rec_settled = sc.next();
         }
