@@ -44,10 +44,12 @@ public class Violation {
                 case 2:
                     vio.viewViolation();
                     vio.updateViolation();
+                    vio.viewViolation();
                 break;
                 case 3:
                     vio.viewViolation();
                     vio.deleteViolation();
+                    vio.viewViolation();
                     break;
                 case 4:
                     vio.viewViolation();

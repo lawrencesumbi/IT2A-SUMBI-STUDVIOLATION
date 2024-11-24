@@ -44,10 +44,12 @@ public class Student {
                 case 2:
                     stud.viewStudents();
                     stud.updateStudents();
+                    stud.viewStudents();
                     break;
                 case 3:
                     stud.viewStudents();
                     stud.deleteStudents();
+                    stud.viewStudents();
                     break;
                 case 4:
                     stud.viewStudents();

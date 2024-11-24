@@ -47,10 +47,12 @@ public class Record {
                 case 2:
                     rec.viewRecord();
                     rec.updateRecord();
+                    rec.viewRecord();
                 break;
                 case 3:
                     rec.viewRecord();
                     rec.deleteRecord();
+                    rec.viewRecord();
                     break;
                 case 4:
                     rec.viewRecord();
@@ -192,6 +194,7 @@ public class Record {
         Scanner sc = new Scanner(System.in);
         config conf = new config();
         
+        System.out.println("Update the record ID you want to settle...");
         System.out.print("Enter Record ID to update: ");
         int rec_id;
         
